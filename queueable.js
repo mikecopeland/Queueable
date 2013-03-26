@@ -1,6 +1,19 @@
-var Queueables = new Object();
-Queueables.forms = [];
-Queueables.serializeForm = serializeForm;
+var Queueables = new Queueables();
+function Queueables(){
+	if(typeof(Storage)!=="undefined")
+	  {
+	  	if(!localStorage.queuedForms){
+	  		localStorage.queuedForms = [];
+	  	}
+	  	this.forms = localStorage.queuedForms;
+	  	this.serializeForm = serializeForm;
+	  	//Console.log("Queuables init.");
+	  }
+	else
+	  {
+	  	//Console.log("Your browser does not support local storage. Using queueables is not possible.");
+	  }
+}
 function serializeForm(){
 
 }
